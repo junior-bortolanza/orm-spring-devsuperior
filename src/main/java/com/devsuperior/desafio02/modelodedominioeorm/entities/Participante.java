@@ -18,8 +18,8 @@ public class Participante {
     private String email;
 
     @ManyToMany
-    @JoinTable(name = "tb_participante_atividade",
-            joinColumns = @JoinColumn(name = "participante_id"),
+    @JoinTable(name = "tb_participantes_atividade",
+            joinColumns = @JoinColumn(name = "participantes_id"),
             inverseJoinColumns = @JoinColumn(name = "atividade_id"))
     private Set<Atividade> atividades = new HashSet<>();
 
@@ -53,5 +53,8 @@ public class Participante {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public Set<Atividade> getAtividades() {
+        return atividades;
     }
 }

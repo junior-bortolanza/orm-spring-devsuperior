@@ -19,10 +19,15 @@ public class Atividade {
     private String descricao;
     private Double preco;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
     @ManyToMany(mappedBy = "atividades")
     private Set<Participante> participantes = new HashSet<>();
 
-    @OneToMany
+
+    @OneToMany(mappedBy = "atividade")
     private List<Bloco> blocos = new ArrayList<>();
 
     public Atividade() {}
@@ -66,11 +71,12 @@ public class Atividade {
         this.preco = preco;
     }
 
-    public Set<Participante> getParticipantes() {
-        return participantes;
-    }
 
     public List<Bloco> getBlocos() {
         return blocos;
+    }
+
+    public Set<Participante> getParticipantes() {
+        return participantes;
     }
 }
